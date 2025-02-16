@@ -89,7 +89,7 @@ Supports multiple license types, including: **Small Motorcycles**, **Heavy Motor
 
 ## How to Run the System  
 1. Ensure you have **Visual Studio Community 2022** and **SQL Server** installed.  
-2. Import the **DVLD** database file (located in the project folder) into SQL Server.  
+2. Import the **DVLD_Database** database file (located in the project folder) into SQL Server.  
 3. Open `clsDataAccessLink.cs` and set your **username** and **password** for database access.  
 4. Run the program and start exploring its features.  
 
