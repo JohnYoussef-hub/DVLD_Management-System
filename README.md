@@ -88,7 +88,7 @@ This system enhances the process of obtaining and managing driver's licenses, en
 
 ---
 
-## 🚀 How to Run the System
+##- How to Run the System
 1. You should have **Visual Studio Community 2022** and **SQL Server**.
 2. Import **DVLD** (the database file in the project folder) into SQL Server.
 3. Open `clsDataAccessLink.cs` and set your **username** and **password**.
@@ -97,5 +97,5 @@ This system enhances the process of obtaining and managing driver's licenses, en
 ---
 
 
-## If you have any free time, I’d love for you to try out the program—I’m truly grateful for your feedback and deeply appreciate your thoughts on it. Thank you so much!
+## If you have any free time, I’d love for you to try out the programme, I’m truly grateful for your feedback and deeply appreciate your thoughts on it. Thank you so much!
 
