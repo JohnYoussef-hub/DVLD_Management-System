@@ -7,7 +7,7 @@ The **DVLD Management System** is a C# application designed to streamline the pr
 ## Screenshots  
 ![Main Screen](https://i.imgur.com/o77gZ9d.png)  
 ![People Management](https://i.imgur.com/uL0uiLC.png) 
-![Applications Management](https://i.imgur.com/o77gZ9d.png)
+![Applications Management](https://i.imgur.com/UmiCgrH.png)
 
 More detailed screenshots are available [here](https://imgur.com/a/w0fNXKC).
 
