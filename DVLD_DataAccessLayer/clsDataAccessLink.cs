@@ -9,6 +9,6 @@ namespace DataAccessLayer
 {
     internal class clsDataAccessLink
     {
-        public static string connectionString = "Server=.;Database=DVLD;User Id=sa;Password=sa123456;";
+        public static string connectionString = "Server=.;Database=DVLD_Database;User Id=sa;Password=sa123456;";
     }
 }
