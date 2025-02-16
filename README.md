@@ -69,26 +69,27 @@ Supports multiple license types:
 - Only users with a valid car license can apply.
 - Ensures no duplicate international licenses are issued.
 
-## 🎯 System Advantages
+### 🎯 System Advantages
 - **Efficiency**: Automates license issuance and management.
 - **User-Friendly**: Intuitive interface for easy navigation.
 - **Security**: Unique and securely stored applicant information.
 - **Flexibility**: Supports various license types and services.
 - **Transparency**: Tracks actions and payments for audit purposes.
 
-## 🚀 How It Works
+### 🚀 How It Works
 1. **Application Submission**: Users submit an application for a service.
 2. **Payment**: Users pay the required fees.
 3. **Testing**: Users pass vision, written, and practical tests.
 4. **License Issuance**: The system generates the license upon meeting requirements.
 5. **Management**: Administrators handle users, licenses, and applications.
 
-This system enhances the process of obtaining and managing driver's licenses, ensuring security, efficiency, and convenience for both applicants and administrators.
+
+### • This system enhances the process of obtaining and managing driver's licenses, ensuring security, efficiency, and convenience for both applicants and administrators.
 
 
 ---
 
-##- How to Run the System
+## • How to Run the System
 1. You should have **Visual Studio Community 2022** and **SQL Server**.
 2. Import **DVLD** (the database file in the project folder) into SQL Server.
 3. Open `clsDataAccessLink.cs` and set your **username** and **password**.
