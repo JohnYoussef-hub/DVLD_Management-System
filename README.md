@@ -4,6 +4,12 @@
 The **DVLD Management System** is a C# application designed to streamline the process of managing driver's licenses and vehicle licenses. It provides an efficient, secure, and user-friendly platform for handling license applications, renewals, and administrative tasks. The system manages **people**, **users**, and **drivers**, ensuring a seamless experience for both applicants and administrators.  
 
 ---
+## Screenshots  
+![Main Screen](https://i.imgur.com/o77gZ9d.png)  
+![People Management](https://i.imgur.com/uL0uiLC.png) 
+![Applications Management](https://i.imgur.com/o77gZ9d.png)
+
+More detailed screenshots are available [here](https://imgur.com/a/w0fNXKC).
 
 ## Key Features  
 
