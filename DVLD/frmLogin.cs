@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace DVLD_Project.Login
 {
@@ -11,46 +12,26 @@ namespace DVLD_Project.Login
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
-        private const string CredentialsFile = "user_credentials.txt";
+
+        public event Action OnSaveCredentialsEvent;
+        public event Action OnUnSaveCredentialsEvent;
+
 
         public frmLogin()
         {
             InitializeComponent();
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(frmLogin_KeyDown);
-            LoadSavedCredentials();
+
+            LoadLoginInfo();
+            OnSaveCredentialsEvent += SaveLoginInfo;
+            OnUnSaveCredentialsEvent += UnSaveLoginInfo;
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
             txtPassword.UseSystemPasswordChar = true;
             pbSeePass.Image = Properties.Resources.invisible;
-        }
-
-        private void LoadSavedCredentials()
-        {
-            if (File.Exists(CredentialsFile))
-            {
-                string[] credentials = File.ReadAllLines(CredentialsFile);
-                if (credentials.Length == 2)
-                {
-                    txtUserName.Text = credentials[0];
-                    txtPassword.Text = credentials[1];
-                    chkRememberMe.Checked = true;
-                }
-            }
-        }
-
-        private void SaveCredentials()
-        {
-            if (chkRememberMe.Checked)
-            {
-                File.WriteAllLines(CredentialsFile, new string[] { txtUserName.Text, txtPassword.Text });
-            }
-            else if (File.Exists(CredentialsFile))
-            {
-                File.Delete(CredentialsFile);
-            }
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
@@ -99,11 +80,46 @@ namespace DVLD_Project.Login
             else return true;
         }
 
+        private void SaveLoginInfo()
+        {
+            string keyPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\DVLD";
+
+
+            Registry.SetValue(keyPath, "UserName", txtUserName.Text ?? "", RegistryValueKind.String);
+            Registry.SetValue(keyPath, "Password", txtPassword.Text ?? "", RegistryValueKind.String);
+            Registry.SetValue(keyPath, "SaveState", "true", RegistryValueKind.String);
+
+        }
+
+        private void UnSaveLoginInfo()
+        {
+            string keyPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\DVLD";
+
+            Registry.SetValue(keyPath, "UserName", "", RegistryValueKind.String);
+            Registry.SetValue(keyPath, "Password", "", RegistryValueKind.String);
+            Registry.SetValue(keyPath, "SaveState", "false", RegistryValueKind.String);
+
+        }
+
+        private void LoadLoginInfo()
+        {
+            string keyPath = @"HKEY_LOCAL_MACHINE\SOFTWARE\DVLD";
+            string value1Data = Registry.GetValue(keyPath, "UserName", null) as string;
+            string value2Data = Registry.GetValue(keyPath, "Password", null) as string;
+            bool saveState = Registry.GetValue(keyPath, "SaveState", null) as string == "true";
+            
+            txtUserName.Text = value1Data ?? "";
+            txtPassword.Text = value2Data ?? "";
+            chkRememberMe.Checked = saveState;
+        }
+
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (LoginProccess(txtUserName.Text, txtPassword.Text))
             {
-                SaveCredentials();
+                (chkRememberMe.Checked ? OnSaveCredentialsEvent : OnUnSaveCredentialsEvent)?.Invoke();
+
                 clsUser._CurrentUserName = txtUserName.Text;
                 this.Hide();
                 frmMain frmMain = new frmMain();
